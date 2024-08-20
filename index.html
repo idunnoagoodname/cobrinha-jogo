@@ -127,10 +127,33 @@
             const goingRight = dx === 10;
             const goingLeft = dx === -10;
 
+            /*
+             * Prevent the snake from reversing
+             * 
+             * Example scenario:
+             * Snake is moving to the right. User presses down and immediately left
+             * and the snake immediately changes direction without taking a step down first
+             */
+
             // Verifying the left key
             if(keyPressed === LEFT_KEY && !goingRight){
                 dx = -10;
                 dy = 0;
+            }
+            // Verifying the up key
+            if(keyPressed == UP_KEY && !goingDown){
+                dx = 0;
+                dy = -10;
+            }
+            // Verifying the right key
+            if(keyPressed == RIGHT_KEY && !goingLeft){
+                dx = 10;
+                dy = 0;
+            }
+            // Verifying the down key
+            if(keyPressed == DOWN_KEY && !goingDown){
+                dx = 0;
+                dy = 10;
             }
         }
 
